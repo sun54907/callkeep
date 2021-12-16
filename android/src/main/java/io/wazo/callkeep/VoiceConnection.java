@@ -83,7 +83,8 @@ public class VoiceConnection extends Connection {
     public void onAnswer() {
         super.onAnswer();
         Log.d(TAG, "onAnswer called");
-        Log.d(TAG, "onAnswer ignored");
+        setActive();
+        Log.d(TAG, "onAnswer setActive");
     }
     
     @Override
