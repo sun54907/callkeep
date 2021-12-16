@@ -83,8 +83,7 @@ public class VoiceConnection extends Connection {
     public void onAnswer() {
         super.onAnswer();
         Log.d(TAG, "onAnswer called");
-        setActive();
-        Log.d(TAG, "onAnswer setActive");
+        Log.d(TAG, "onAnswer ignored");
     }
     
     @Override
@@ -92,13 +91,11 @@ public class VoiceConnection extends Connection {
         super.onAnswer(videoState);
         Log.d(TAG, "onAnswer videoState called: " + videoState);
 
-        setConnectionCapabilities(getConnectionCapabilities() | Connection.CAPABILITY_HOLD);
-        setAudioModeIsVoip(true);
+        onReject();
 
         sendCallRequestToActivity(ACTION_ANSWER_CALL, handle);
         sendCallRequestToActivity(ACTION_AUDIO_SESSION, handle);
-        setActive();
-        Log.d(TAG, "onAnswer videoState setActive");
+        Log.d(TAG, "onAnswer videoState onReject");
     }
 
     @Override
